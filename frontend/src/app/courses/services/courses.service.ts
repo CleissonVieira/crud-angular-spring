@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { take, delay } from 'rxjs/operators';
+import { delay, take } from 'rxjs/operators';
 
 import { Course } from './../model/course';
 
@@ -21,5 +21,9 @@ export class CoursesService {
         take(1),
         delay(1000)
        );
+  }
+
+  postSave(record: Partial<Course>) {
+    return this.httpClient.post<Course>(this.API, record);
   }
 }
