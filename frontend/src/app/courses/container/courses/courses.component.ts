@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Course } from '../model/course';
-import { ErrorDialogComponent } from './../../shared/components/error-dialog/error-dialog.component';
-import { CoursesService } from './../services/courses.service';
+import { ErrorDialogComponent } from '../../../shared/components/error-dialog/error-dialog.component';
+import { Course } from '../../model/course';
+import { CoursesService } from '../../services/courses.service';
 
 
 @Component({
@@ -14,10 +14,9 @@ import { CoursesService } from './../services/courses.service';
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss']
 })
-export class CoursesComponent implements OnInit {
+export class CoursesComponent {
 
   courses$: Observable<Course[]>;
-  displayedColumns = ['name','category','actions']
 
   constructor(
     private coursesService: CoursesService,
@@ -32,9 +31,6 @@ export class CoursesComponent implements OnInit {
           return of([])
         })
       )
-  }
-
-  ngOnInit(): void {
   }
 
   onError(errorMessage: string) {
