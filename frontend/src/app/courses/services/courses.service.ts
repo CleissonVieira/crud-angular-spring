@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, take } from 'rxjs/operators';
+import { delay, first, take } from 'rxjs/operators';
 
 import { Course } from './../model/course';
 
@@ -19,11 +19,27 @@ export class CoursesService {
     return this.httpClient.get<Course[]>(this.API)
       .pipe(
         take(1),
-        delay(1000)
-       );
+        delay(500)
+      );
+  }
+
+  getById(id: string) {
+    return this.httpClient.get<Course>(`${this.API}/${id}`);
   }
 
   postSave(record: Partial<Course>) {
-    return this.httpClient.post<Course>(this.API, record);
+    return record._id ? this.update(record) : this.create(record);
+  }
+
+  private create(record: Partial<Course>) {
+    return this.httpClient.post<Course>(this.API, record).pipe(first());
+  }
+
+  private update(record: Partial<Course>) {
+    return this.httpClient.put<Course>(`${this.API}/${record._id}`, record).pipe(first());
+  }
+
+  remove(id: string) {
+    return this.httpClient.delete(`${this.API}/${id}`).pipe(first());
   }
 }
