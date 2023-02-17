@@ -21,8 +21,11 @@
 ## Anotações/Dicas
 
 1. No controller se usa acima da classe :
+   
    1.1. @Validated para utilizar as validações nos endPoints
+   
    1.2. @RequestMapping("/api/courses") // informa a rota principal das requisições
+   
    1.3. @AllArgsConstructor // automatiza e cria os construtores por baixo dos panos
 
 2. No controller, em um Get por ID, utilizamos @GetMapping("/{id}") e no parametro da função @PathVariable long id para indicar que vem da URL o ID e que se chama id (faz de para se o nome for o mesmo do GetMapping)
