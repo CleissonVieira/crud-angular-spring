@@ -4,16 +4,20 @@
 
 - Angular Extension Pack (Loiane)
 
-## [Angular CLI 14.2.6](https://github.com/angular/angular-cli)
+## [Angular CLI 15.1.1](https://github.com/angular/angular-cli)
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+# Anotações/Dicas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Divisão em módulos para um código mais limpo
+   1.1. A cada novo módulo gerar um `ng g m nomeModulo --routing`
 
-## Build
+2. É possível criar a própria paleta de cores utilizando SCSS. Existe a documentação: Guides -> Theming Angular Material
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+3. Criado proxy.conf.js para não precisar configurar CORS na API, de forma que conseguimos utilizar a API com frontend localmente.
+   3.1. Para isso foi necessário alterar a variável scripts: start: "ng serve --proxy-config proxy.conf.js" e utiliza NPM RUN START para iniciar
+
+4. Criado um courses/guards/course.resolver.ts para quando entrar no course-routing que tenha uma variável id (sendo essa o edit) ele busque o objeto para renderizar na tela
