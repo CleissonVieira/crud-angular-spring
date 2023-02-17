@@ -29,6 +29,9 @@
    Classe de retorno ResponseEntity<Course> para manipular o status de retorno caso não exista dados
    
 3. No model se usa acima da classe :
+   
    3.1. @SQLDelete(sql = "UPDATE Course SET status = 'Inativo' WHERE id = ?") para o método deleteById, invocado no controller utilizando este modelo, utilizar da query informada
+   
    3.2. @Where(clause = "status = 'Ativo'") para quando qualquer método no controller executar alguma query utilizando deste modelo aplicar a clausula informada
+   
    3.3. Notações como @NotBlank, @NotNull, @Length(min = 5, max = 100), servem, respectivamente, para não permitir valores em branco, nullos e limitar os caracteres aceitos. Assim como @Column(length = 100, nullable = false) oferece um lengh max e não permite variáveis nullas para o banco também
